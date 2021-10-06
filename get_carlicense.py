@@ -12,10 +12,10 @@ headers_stream = {'Ocp-Apim-Subscription-Key': key,                     # 辨識
 def get_license(img):
     img_encode = cv2.imencode('.jpg', img)[1]       # 將 img 編碼為 JPEG 格式，[1]返回資料, [0]返回是否成功
     img_bytes = img_encode.tobytes()                # 再將資料轉為 bytes, 此即為要傳送的資料
-    r1 = requests.post(recog_url,            # 發出 POST 
+    r1 = requests.post(recog_url,           
                               headers = headers_stream, 
                               data = img_bytes)
-    if r1.status_code != 202:                # 202 代表接受請求
+    if r1.status_code != 202:                # 202 接受請求
         print(r1.json())
         return '請求失敗'
     #--↓↓辨識請求成功↓↓--#
